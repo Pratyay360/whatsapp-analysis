@@ -6,11 +6,12 @@ if uploaded_file is not None:
     # To read file as bytes:
     bytes_data = uploaded_file.getvalue()
     data= bytes_data.decode("utf-8")
+    # st.text(data)
     df=preprocessor.preprocess(data)
     
     st.dataframe(df)
     
-    #fetch unique users
+    # fetch unique users
     user_list=df["users"].unique().tolist()
     user_list.remove("group_notification")
     user_list.sort()
