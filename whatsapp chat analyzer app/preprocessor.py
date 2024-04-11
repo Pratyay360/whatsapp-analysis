@@ -5,7 +5,7 @@ def preprocess(data):
     message=re.split(pattern,data)[1:]
     dates=re.findall(pattern,data)
     df=pd.DataFrame({"user_message":message,"message_date":dates})
-    df["message_date"]=pd.to_datetime(df["message_date"], format='%d/%m/%y, %H:%M - ') #what if the user inputted wrong format
+    df["message_date"]=pd.to_datetime(df["message_date"], format='%m/%d/%y, %H:%M - ') #what if the user inputted wrong format
     df.rename(columns={'message_date' : 'date'},inplace=True)
     users=[]
     messages=[]

@@ -1,7 +1,8 @@
 import streamlit as st
 import preprocessor,helper
-st.sidebar.title("Whatsapp chat analyzer")
-uploaded_file = st.sidebar.file_uploader("Choose a file")
+st.title("Whatsapp chat analyzer")
+st.subheader("Analyse your whats app chat")
+uploaded_file = st.file_uploader("Choose a text file")
 if uploaded_file is not None:
     # To read file as bytes:
     bytes_data = uploaded_file.getvalue()
@@ -16,13 +17,14 @@ if uploaded_file is not None:
     user_list.remove("group_notification")
     user_list.sort()
     user_list.insert(0,"Overall")
+    st.sidebar.title("Analysis")
     selected_user= st.sidebar.selectbox("The analysis with respect to",user_list)
     if st.sidebar.button('Show analysis'):
 
         num_messeges= helper.fetch_stats(selected_user,df)
 
-        col1,col2,col3,col4 = st.columns(4)
+        col1,col2,col3,col4= st.columns(4)
         with col1:
-            st.header("Total messeges")
-            st.title(num_messeges)
+            st.title("Total messeges")
+            st.subheader(num_messeges)
 
