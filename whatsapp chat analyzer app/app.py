@@ -22,8 +22,9 @@ if uploaded_file is not None:
     if st.sidebar.button('Show analysis'):
 
         num_messeges,words= helper.fetch_stats(selected_user,df)
+        st.sidebar.header(selected_user)
 
-        col1,col2,col3,col4= st.columns(4,gap="large")
+        col1,col2,col3,col4= st.columns([2,2,1,2])
         with col1:
             st.title("Total messeges")
             st.subheader(num_messeges)
