@@ -21,7 +21,7 @@ if uploaded_file is not None:
     selected_user= st.sidebar.selectbox("The analysis with respect to",user_list)
     if st.sidebar.button('Show analysis'):
 
-        num_messeges,words= helper.fetch_stats(selected_user,df)
+        num_messeges,words,media= helper.fetch_stats(selected_user,df)
         st.sidebar.header(selected_user)
 
         col1,col2,col3,col4= st.columns([2,2,1,2])
@@ -31,3 +31,6 @@ if uploaded_file is not None:
         with col2:
             st.title("Total words")
             st.subheader(words)
+        with col3:
+            st.title("Total media")
+            st.subheader(media)
