@@ -21,6 +21,9 @@ def preprocess(data):
     df['message']=messages
     df.drop(columns=['user_message'],inplace=True)
     df["year"]=df["date"].dt.year
+    df['month_num']=df['date'].dt.month
+    df['specific_date']=df['date'].dt.date
+    df['day_name']=df['date'].dt.day_name()
     df["month"]=df["date"].dt.month_name()
     df["day"]=df["date"].dt.day
     df["hour"]=df["date"].dt.hour

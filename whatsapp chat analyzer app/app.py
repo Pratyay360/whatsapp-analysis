@@ -12,7 +12,7 @@ if uploaded_file is not None:
     # st.text(data)
     df=preprocessor.preprocess(data)
     
-    st.dataframe(df)
+    # st.dataframe(df)
     
     # fetch unique users
     user_list=df["users"].unique().tolist()
@@ -26,7 +26,7 @@ if uploaded_file is not None:
 
         num_messeges,words,media,num_links= helper.fetch_stats(selected_user,df)
         st.sidebar.header(selected_user)
-
+        st.title("Top Stats")
         col1,col2,col3,col4= st.columns([2,2,1,2])
         with col1:
             st.header("Total messeges")
@@ -40,7 +40,44 @@ if uploaded_file is not None:
         with col4:
             st.header("Links shared")
             st.subheader(num_links)
-    # Bar chart and percentage of chatting
+            
+        
+    #monthly timeline
+    st.title("Monthly Timeline")
+    timeline=helper.monthly_timeline(selected_user,df)
+    fig,ax=plt.subplots()
+    ax.plot(timeline['time'],timeline['message'],color="indigo")
+    plt.xticks(rotation="vertical")
+    st.pyplot(fig)
+    #daily timeline
+    st.title("DailyTimeline")
+    daily_timeline=helper.daily_timeline(selected_user,df)
+    fig,ax=plt.subplots()
+    ax.bar(daily_timeline['specific_date'],daily_timeline['message'],color="green")
+    plt.xticks(rotation="vertical")
+    st.pyplot(fig)
+    #weekly activity map
+    st.title("Weekly Activity Map")
+    col1,col2= st.columns(2)
+    with col1:
+        st.header("Most busy day")
+        busy_day=helper.week_activity_map(selected_user,df)
+        # st.dataframe(busy_day)
+        fig,ax=plt.subplots()
+        ax.bar(busy_day.index,busy_day.values)
+        plt.xticks(rotation=45)
+        st.pyplot(fig)
+    with col2:
+        st.header("Most busy month")
+        busy_month=helper.month_activity_map(selected_user,df)
+        # st.dataframe(busy_day)
+        fig,ax=plt.subplots()
+        ax.bar(busy_month.index,busy_month.values,color="red")
+        plt.xticks(rotation=45)
+        st.pyplot(fig)
+    
+    
+    #  Bar chart and percentage of chatting
     if selected_user=="Overall":
         x,new_df=helper.most_busy_user(df)
         fig,ax=plt.subplots()
