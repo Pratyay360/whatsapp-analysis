@@ -2,6 +2,7 @@ import streamlit as st
 import preprocessor,helper
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
+import seaborn as sns
 st.title("Whatsapp chat analyzer")
 st.subheader("Analyse your whats app chat")
 uploaded_file = st.file_uploader("Choose a text file")
@@ -75,8 +76,12 @@ if uploaded_file is not None:
         ax.bar(busy_month.index,busy_month.values,color="red")
         plt.xticks(rotation=45)
         st.pyplot(fig)
-    
-    
+    #HEATMAP
+    st.title("Weekly Activity Heatmap")
+    user_heatmap=helper.activity_heatmap(selected_user,df)
+    fig,ax=plt.subplots()
+    ax=sns.heatmap(user_heatmap)
+    st.pyplot(fig)
     #  Bar chart and percentage of chatting
     if selected_user=="Overall":
         x,new_df=helper.most_busy_user(df)
