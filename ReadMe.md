@@ -71,7 +71,16 @@ Run these commands to run the application locally:
 docker pull ghcr.io/pratyay360/whatsapp-analysis:latest
 
 docker run --rm -it -p 8501:8501 ghcr.io/pratyay360/whatsapp-analysis
+
 ```
+or 
+```bash
+docker pull docker.io/pratyay360/whatsapp-analyzer:latest
+
+docker run --rm -it -p 8501:8501 docker.io/pratyay360/whatsapp-analyzer:latest
+
+```
+
 
 Then open your browser and go to [http://localhost:8501](http://localhost:8501).
 
