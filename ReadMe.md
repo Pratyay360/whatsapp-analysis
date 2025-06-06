@@ -20,7 +20,8 @@ Dive deep into your WhatsApp conversations with this powerful and intuitive anal
 - 📏 **Message Pattern Insights**: Analyze message length distributions and response times.
 - 🚀 **Conversation Dynamics**: Find out who initiates conversations most often.
 - 🔗 **URL Tracking**: Analyze shared domains and link statistics.
-- 📄 **Exportable Reports**: Easily download or copy comprehensive analysis summaries.
+- 📄 **Exportable PDF Reports**: Download comprehensive analysis summaries as PDF files.
+- 🗂️ **Multi-file ZIP Support**: If you upload a ZIP with multiple .txt files, you can select which chat to analyze.
 
 ## 📸 Screenshots
 *(Placeholder: Add a few screenshots of the application in action here to showcase its features and UI.)*
@@ -59,6 +60,23 @@ Follow these steps to get the WhatsApp Chat Analyzer up and running on your loca
     ```
 
 ## 🏃‍♀️ Running the Application
+
+You can run the application locally using Docker (recommended for easiest setup), or directly with Python.
+
+### 🚀 Run Locally with Docker
+
+Run these commands to run the application locally:
+
+```bash
+docker pull ghcr.io/pratyay360/whatsapp-analysis:latest
+
+docker run --rm -it -p 8501:8501 ghcr.io/pratyay360/whatsapp-analysis
+```
+
+Then open your browser and go to [http://localhost:8501](http://localhost:8501).
+
+### 🐍 Run with Python (Alternative)
+
 1.  **Launch the Streamlit app:**
     ```bash
     streamlit run app.py
@@ -76,12 +94,14 @@ Follow these steps to get the WhatsApp Chat Analyzer up and running on your loca
 - Tap the three-dot menu (⋮) in the top-right corner.
 - Select **More** → **Export chat**.
 - Crucially, choose **"Without Media"**. This ensures faster processing and a smaller file size.
-- Save or send the exported `.txt` file to your computer.
+- Save or send the exported `.txt` file or `.zip` (if your device exports as ZIP) to your computer.
 
 ### 2. Analyze Your Chat
-- Once the Streamlit application is running, use the sidebar to upload your exported `.txt` file.
+- Once the Streamlit application is running, use the sidebar to upload your exported `.txt` or `.zip` file.
+- If you upload a ZIP with multiple .txt files, you will be prompted to select which chat to analyze.
 - After a successful upload, you can select a specific user for focused analysis or choose "Overall" to analyze the entire group's activity.
 - Click the "Show Detailed Analysis" button to generate and display the insights.
+- Use the **Download PDF Report** button to save your analysis as a PDF file.
 
 ## 📊 In-Depth Analysis Capabilities
 
