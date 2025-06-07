@@ -224,5 +224,3 @@ If you encounter persistent issues:
     *   Information about your operating system and Python version.
 
 ---
-
-**Made with ❤️ for insightful WhatsApp chat analysis.**
