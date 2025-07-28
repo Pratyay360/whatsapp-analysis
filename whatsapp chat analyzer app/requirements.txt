@@ -1,0 +1,11 @@
+emoji
+fpdf2
+matplotlib
+pandas
+plotly
+python-dateutil
+seaborn
+streamlit
+textblob
+vaderSentiment
+wordcloud
