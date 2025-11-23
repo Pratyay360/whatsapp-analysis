@@ -1,18 +1,22 @@
-name: Docker Image CI
+
+name: Build and Push image 
+
+permissions:
+  contents: read
+  packages: write
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches: [ main ]
 
 jobs:
-
-  build:
-
+  publish:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      - uses: pratyay360/git2ghcr@v2
+        with:
+          image: ghcr.io/${{ github.repository }}
+          tags: latest
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          
